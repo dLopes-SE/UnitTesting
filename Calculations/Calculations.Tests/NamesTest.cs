@@ -32,5 +32,12 @@ namespace Calculations.Tests
       var names = new Names();
       Assert.Matches("[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+", names.MakeFullName("Dylan", "Lopes"));
     }
+
+    [Fact]
+    public void NickName_MustBeNull()
+    {
+      var names = new Names();
+      Assert.Null(names.NickName);
+    }
   }
 }
