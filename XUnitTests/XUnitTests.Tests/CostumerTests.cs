@@ -6,6 +6,7 @@ namespace XUnitTests.Tests
   public class CostumerTests
   {
     [Fact]
+    [Trait("Category", "Costumer")]
     public void CheckNameNotEmpty()
     {
       var costumer = new Costumer();
@@ -14,6 +15,7 @@ namespace XUnitTests.Tests
     }
 
     [Fact]
+    [Trait("Category", "Costumer")]
     public void CheckAgeBetween25and40()
     {
       var costumer = new Costumer();
@@ -21,6 +23,7 @@ namespace XUnitTests.Tests
     }
 
     [Fact]
+    [Trait("Category", "Costumer")]
     public void GetAnExceptionTest()
     {
       var costumer = new Costumer();
@@ -28,6 +31,7 @@ namespace XUnitTests.Tests
     }
 
     [Fact]
+    [Trait("Category", "Costumer")]
     public void GetAnExceptionMessageText()
     {
       var costumer = new Costumer();
@@ -36,6 +40,7 @@ namespace XUnitTests.Tests
     }
 
     [Fact]
+    [Trait("Category", "LoyalCostumer")]
     public void LoyalCostumerForOrdersG100Test()
     {
       var costumer = CostumerFactory.CreaterCostumerInstance(101);
@@ -43,6 +48,7 @@ namespace XUnitTests.Tests
     }
 
     [Fact]
+    [Trait("Category", "LoyalCostumer")]
     public void LoyalCostumerCheckDiscountTest()
     {
       var costumer = CostumerFactory.CreaterCostumerInstance(102);
