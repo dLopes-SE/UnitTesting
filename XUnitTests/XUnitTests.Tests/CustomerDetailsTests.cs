@@ -12,6 +12,7 @@ namespace XUnitTests.Tests
     }
 
     [Fact]
+    [Trait("Category", "Customer")]
     public void GetFullName_GivenFirstAndLastName_ReturnsFullName()
     {
       Assert.Equal("Dylan Lopes", _customerFixture.customer.GetFullName("Dylan", "Lopes"));

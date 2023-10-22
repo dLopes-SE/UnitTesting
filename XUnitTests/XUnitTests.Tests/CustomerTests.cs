@@ -5,9 +5,9 @@ namespace XUnitTests.Tests
   [Collection("Customer")]
   public class CustomerTests
   {
-    private readonly CustomerFixtureCollection _customerFixture;
+    private readonly CustomerFixture _customerFixture;
 
-    public CustomerTests(CustomerFixtureCollection customerFixture)
+    public CustomerTests(CustomerFixture customerFixture)
     {
       _customerFixture = customerFixture;
     }
@@ -16,7 +16,7 @@ namespace XUnitTests.Tests
     [Trait("Category", "Customer")]
     public void CheckNameNotEmpty()
     {
-      var customer = new Customer();
+      var customer = _customerFixture.customer;
       Assert.NotNull(customer.Name);
       Assert.False(string.IsNullOrEmpty(customer.Name));
     }
@@ -25,7 +25,7 @@ namespace XUnitTests.Tests
     [Trait("Category", "Customer")]
     public void CheckAgeBetween25and40()
     {
-      var customer = new Customer();
+      var customer = _customerFixture.customer;
       Assert.InRange<int>(customer.Age, 25, 40);
     }
 
@@ -33,7 +33,7 @@ namespace XUnitTests.Tests
     [Trait("Category", "Customer")]
     public void GetAnExceptionTest()
     {
-      var customer = new Customer();
+      var customer = _customerFixture.customer;
       Assert.Throws<ArgumentException>(() => customer.GetAnException());
     }
 
@@ -41,7 +41,7 @@ namespace XUnitTests.Tests
     [Trait("Category", "Customer")]
     public void GetAnExceptionMessageText()
     {
-      var customer = new Customer();
+      var customer = _customerFixture.customer;
       var exceptionDetais = Assert.Throws<ArgumentException>(() => customer.GetAnException());
       Assert.Equal("Hello", exceptionDetais.Message);
     }
