@@ -21,5 +21,15 @@ namespace XUnitTests.Tests
       var obj = new DataDriven();
       Assert.Equal(expected, obj.IsOdd(value));
     }
+
+    [Theory]
+    [Trait("Category", "DataDriven")]
+    //[MemberData(nameof(TestDataShare.IsOddOrEvenExternalData), MemberType = typeof(TestDataShare))]
+    [IsOddOrEvenDataAtrribute]
+    public void IsOdd_TestOddAndEven_AttributeData(int value, bool expected)
+    {
+      var obj = new DataDriven();
+      Assert.Equal(expected, obj.IsOdd(value));
+    }
   }
 }
