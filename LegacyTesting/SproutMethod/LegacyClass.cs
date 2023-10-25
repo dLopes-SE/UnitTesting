@@ -1,31 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SproutMethod
 {
-    public class LegacyClass
+  public class LegacyClass
+  {
+    public void AppendDictionary<TKey, TValue>(Dictionary<TKey, TValue> fromDict, Dictionary<TKey, TValue> toDict)
     {
-        public void AppendDictionary<TKey,TValue>(Dictionary<TKey,TValue> fromDict, Dictionary<TKey,TValue> toDict)
-        {
-            Dictionary<TKey,TValue> validItems = GetValidItems(fromDict, toDict);
+      Dictionary<TKey, TValue> validItems = GetValidItems(fromDict, toDict);
 
-            foreach (var item in validItems)
-            {
-                    toDict.Add(item.Key, item.Value);
-            }
-        }
-
-        public Dictionary<TKey, TValue> GetValidItems<TKey, TValue>(Dictionary<TKey, TValue> fromDict, Dictionary<TKey,
-            TValue> toDict)
-        {
-            var result = new Dictionary<TKey, TValue>();
-
-            foreach (var item in fromDict)
-            {
-                if (!toDict.ContainsKey(item.Key))
-                    result.Add(item.Key,item.Value);
-            }
-            return result;
-        }
+      foreach (var item in validItems)
+      {
+        toDict.Add(item.Key, item.Value);
+      }
     }
+
+    public Dictionary<TKey, TValue> GetValidItems<TKey, TValue>(Dictionary<TKey, TValue> fromDict, Dictionary<TKey,
+        TValue> toDict)
+    {
+      return fromDict.Where(x => !toDict.ContainsKey(x.Key))
+                   .ToDictionary(d => d.Key, d => d.Value);
+    }
+  }
 }
