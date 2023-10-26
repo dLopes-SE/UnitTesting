@@ -3,17 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Core", "..\..\Courses\UnitTesting\Bongo_InitialSetup\Bongo.Core\Bongo.Core.csproj", "{5DFAF512-8FD3-4C42-9637-92E4CF61FBB1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.DataAccess", "..\..\Courses\UnitTesting\Bongo_InitialSetup\Bongo.DataAccess\Bongo.DataAccess.csproj", "{427B1E65-59B1-4B12-9816-9BA7E352E35E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Models", "..\..\Courses\UnitTesting\Bongo_InitialSetup\Bongo.Models\Bongo.Models.csproj", "{6E19BA1C-6D48-4961-AF0D-C9B07640905E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Web", "..\..\Courses\UnitTesting\Bongo_InitialSetup\Bongo.Web\Bongo.Web.csproj", "{2D5D8604-63A9-4C01-AF10-EF79166990DB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Models.Tests", "Bongo.Models.Tests\Bongo.Models.Tests.csproj", "{B17915E3-3371-410F-9D10-39571039BCA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.DataAccess.Tests", "Bongo.DataAccess.Tests\Bongo.DataAccess.Tests.csproj", "{19666BEC-B878-4300-A3EB-F29FE167C4E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.DataAccess.Tests", "Bongo.DataAccess.Tests\Bongo.DataAccess.Tests.csproj", "{19666BEC-B878-4300-A3EB-F29FE167C4E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Models", "Bongo.Models\Bongo.Models.csproj", "{6C966546-511E-42E2-B0EE-E5D41412194B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.DataAccess", "Bongo.DataAccess\Bongo.DataAccess.csproj", "{361A054D-DE76-4C65-814C-6C3102985B59}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Core", "Bongo.Core\Bongo.Core.csproj", "{20F6C2AA-AAB0-420B-AEBF-5770A2E0A3AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5756C37A-00D1-41FF-B41A-79D56169404B}"
+	ProjectSection(SolutionItems) = preProject
+		Bongo.Web\Bongo.Web.csproj = Bongo.Web\Bongo.Web.csproj
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Web", "Bongo.Web\Bongo.Web.csproj", "{D83BD696-2DD0-4990-AC2C-1170E952FAFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,22 +26,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5DFAF512-8FD3-4C42-9637-92E4CF61FBB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DFAF512-8FD3-4C42-9637-92E4CF61FBB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DFAF512-8FD3-4C42-9637-92E4CF61FBB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DFAF512-8FD3-4C42-9637-92E4CF61FBB1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{427B1E65-59B1-4B12-9816-9BA7E352E35E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{427B1E65-59B1-4B12-9816-9BA7E352E35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{427B1E65-59B1-4B12-9816-9BA7E352E35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{427B1E65-59B1-4B12-9816-9BA7E352E35E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E19BA1C-6D48-4961-AF0D-C9B07640905E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E19BA1C-6D48-4961-AF0D-C9B07640905E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E19BA1C-6D48-4961-AF0D-C9B07640905E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E19BA1C-6D48-4961-AF0D-C9B07640905E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D5D8604-63A9-4C01-AF10-EF79166990DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D5D8604-63A9-4C01-AF10-EF79166990DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D5D8604-63A9-4C01-AF10-EF79166990DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D5D8604-63A9-4C01-AF10-EF79166990DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B17915E3-3371-410F-9D10-39571039BCA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B17915E3-3371-410F-9D10-39571039BCA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B17915E3-3371-410F-9D10-39571039BCA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +34,22 @@ Global
 		{19666BEC-B878-4300-A3EB-F29FE167C4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19666BEC-B878-4300-A3EB-F29FE167C4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19666BEC-B878-4300-A3EB-F29FE167C4E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C966546-511E-42E2-B0EE-E5D41412194B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C966546-511E-42E2-B0EE-E5D41412194B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C966546-511E-42E2-B0EE-E5D41412194B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C966546-511E-42E2-B0EE-E5D41412194B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{361A054D-DE76-4C65-814C-6C3102985B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{361A054D-DE76-4C65-814C-6C3102985B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{361A054D-DE76-4C65-814C-6C3102985B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{361A054D-DE76-4C65-814C-6C3102985B59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20F6C2AA-AAB0-420B-AEBF-5770A2E0A3AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20F6C2AA-AAB0-420B-AEBF-5770A2E0A3AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20F6C2AA-AAB0-420B-AEBF-5770A2E0A3AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20F6C2AA-AAB0-420B-AEBF-5770A2E0A3AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D83BD696-2DD0-4990-AC2C-1170E952FAFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D83BD696-2DD0-4990-AC2C-1170E952FAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D83BD696-2DD0-4990-AC2C-1170E952FAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D83BD696-2DD0-4990-AC2C-1170E952FAFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Courses\UnitTesting\Bongo_InitialSetup\Bongo.Models\Bongo.Models.csproj" />
+    <ProjectReference Include="..\Bongo.Models\Bongo.Models.csproj" />
   </ItemGroup>
 
 </Project>

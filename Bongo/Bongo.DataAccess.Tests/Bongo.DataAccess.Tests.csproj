@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Courses\UnitTesting\Bongo_InitialSetup\Bongo.DataAccess\Bongo.DataAccess.csproj" />
+    <ProjectReference Include="..\Bongo.DataAccess\Bongo.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
