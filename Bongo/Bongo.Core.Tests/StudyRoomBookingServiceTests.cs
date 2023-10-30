@@ -1,7 +1,9 @@
 ﻿using Bongo.Core.Services;
+using Bongo.DataAccess;
 using Bongo.DataAccess.Repository.IRepository;
 using Bongo.Models.Model;
 using Bongo.Models.Model.VM;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 
 namespace Bongo.Core.Tests
@@ -15,6 +17,10 @@ namespace Bongo.Core.Tests
 
     public StudyRoomBookingServiceTests()
     {
+      // Setup DbContext
+      var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "temp_Bongo").Options;
+      var context = new ApplicationDbContext(options);
+
       _studyRoomBookingRepo = new Mock<IStudyRoomBookingRepository>();
       _studyRoomRepo = new Mock<IStudyRoomRepository>();
       _bookingService = new StudyRoomBookingService(_studyRoomBookingRepo.Object, _studyRoomRepo.Object);
@@ -25,6 +31,16 @@ namespace Bongo.Core.Tests
     {
       _bookingService.GetAllBooking();
       _studyRoomBookingRepo.Verify(x => x.GetAll(null), Times.Once);
+    }
+
+    [Fact]
+    public void GetAllBooking_NullRequest_ThrowArgumentNullException()
+    {
+      // Null request
+      StudyRoomBooking? request = null;
+
+      // Assert
+      Assert.Throws<ArgumentNullException>(() => _bookingService.BookStudyRoom(request));
     }
 
     [Fact]
@@ -59,8 +75,49 @@ namespace Bongo.Core.Tests
         Date = DateTime.Now.AddDays(1)
       };
 
-      // Setup GetAll studyRooms, making it to return an empty list
-      _studyRoomRepo.Setup(x => x.GetAll()).Returns(new List<StudyRoom>() { });
+      // Setup GetAll studyRooms, making it to return an available room
+      _studyRoomRepo.Setup(x => x.GetAll()).Returns(new List<StudyRoom>()
+        {
+          new StudyRoom()
+          {
+            Id = 1,
+            RoomName = "Room 1",
+            RoomNumber = "One"
+          }
+        });
+
+      StudyRoomBooking savedBooking;
+      _studyRoomBookingRepo.Setup(x => x.Book(It.IsAny<StudyRoomBooking>()))
+                           .Callback<StudyRoomBooking>(booking =>
+                           {
+                             booking.BookingId = 1;
+                             savedBooking = booking;
+                           });
+
+      // Execute method
+      var result = _bookingService.BookStudyRoom(request);
+
+      // Verify if _studyRoomBookingRepository.GetAll was called
+      _studyRoomBookingRepo.Verify(x => x.GetAll(It.IsAny<DateTime>()), Times.Once);
+
+      // Ensure that _studyRoomBookingRepository.Book was called once aswell
+      _studyRoomBookingRepo.Verify(x => x.Book(It.IsAny<StudyRoomBooking>()), Times.Once);
+
+      // Expected result
+      var expectedResult = new StudyRoomBookingResult()
+      {
+        BookingId = 1,
+        FirstName = request.FirstName,
+        LastName = request.LastName,
+        Email = request.Email,
+        Date = request.Date,
+        Code = StudyRoomBookingCode.Success
+      };
+
+      // Assert
+      Assert.Equivalent(expectedResult, result);
+
+      
     }
   }
 }
