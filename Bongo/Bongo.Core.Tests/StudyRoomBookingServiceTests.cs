@@ -39,9 +39,28 @@ namespace Bongo.Core.Tests
       // Verify if _studyRoomBookingRepository.GetAll was called
       _studyRoomBookingRepo.Verify(x => x.GetAll(It.IsAny<DateTime>()), Times.Once);
 
+      // Ensure that _studyRoomBookingRepository.Book was never called
+      _studyRoomBookingRepo.Verify(x => x.Book(It.IsAny<StudyRoomBooking>()), Times.Never);
+
       // Assert
       Assert.Equal(StudyRoomBookingCode.NoRoomAvailable, result.Code);
       Assert.True(result.BookingId == null);
+    }
+
+    [Fact]
+    public void BookStudyRoom_BookAvailableRoom_ReturnStudyRoomBookingResult()
+    {
+      // Setup Request Parameter
+      var request = new StudyRoomBooking()
+      {
+        FirstName = "Dylan",
+        LastName = "Lopes",
+        Email = "dylan.lopes@test.pt",
+        Date = DateTime.Now.AddDays(1)
+      };
+
+      // Setup GetAll studyRooms, making it to return an empty list
+      _studyRoomRepo.Setup(x => x.GetAll()).Returns(new List<StudyRoom>() { });
     }
   }
 }
