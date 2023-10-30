@@ -18,7 +18,7 @@ namespace Bongo.DataAccess.Repository
         }
 
        
-        public IEnumerable<StudyRoomBooking> GetAll(DateTime? date)
+        public IEnumerable<StudyRoomBooking> GetAll(DateTime? date = null)
         {
             if (date != null)
             {

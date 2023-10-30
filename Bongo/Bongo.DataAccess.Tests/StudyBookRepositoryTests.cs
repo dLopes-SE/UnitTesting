@@ -1,11 +1,6 @@
 ﻿using Bongo.DataAccess.Repository;
 using Bongo.Models.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bongo.DataAccess.Tests
 {
@@ -14,6 +9,8 @@ namespace Bongo.DataAccess.Tests
   {
     private StudyRoomBooking studyRoomBooking_One;
     private StudyRoomBooking studyRoomBooking_Two;
+    private readonly DbContextOptions<ApplicationDbContext> _options;
+
 
     public StudyBookRepositoryTests()
     {
@@ -36,21 +33,42 @@ namespace Bongo.DataAccess.Tests
         BookingId = 22,
         StudyRoomId = 2
       };
+
+      // arrange (Mocking an inMemoryDatabase)
+      _options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "temp_Bongo").Options;
+
     }
 
-    [Fact] 
+    [Fact]
     public void SaveBook_Booking_One_CheckTheValuesFromDB()
     {
-      // arrange (Mocking an inMemoryDatabase)
-      var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "temp_Bongo").Options;
-
       // act -> saving the book to the inMemoryDB
-      using var context = new ApplicationDbContext(options);
+      using var context = new ApplicationDbContext(_options);
+      context.Database.EnsureDeleted();
+
       var repo = new StudyRoomBookingRepository(context);
       repo.Book(studyRoomBooking_One);
 
       // Assert -> verify if the booking was correctly inserted
       Assert.True(studyRoomBooking_One.Equals(context.StudyRoomBookings.FirstOrDefault(x => x.StudyRoomId == studyRoomBooking_One.StudyRoomId)));
+    }
+
+    [Fact]
+    public void GetAll_Booking_Both_CheckReturnedBookings()
+    {
+      // act -> saving the book to the inMemoryDB
+      using var context = new ApplicationDbContext(_options);
+      context.Database.EnsureDeleted();
+
+      var repo = new StudyRoomBookingRepository(context);
+      repo.Book(studyRoomBooking_One);
+      repo.Book(studyRoomBooking_Two);
+
+      // GetAll
+      var bookings = repo.GetAll();
+
+      // Assert
+      Assert.Equivalent(new List<StudyRoomBooking>() { studyRoomBooking_One, studyRoomBooking_Two }, bookings);
     }
   }
 }
