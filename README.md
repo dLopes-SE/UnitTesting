@@ -7,3 +7,4 @@ Udemy course #2: [Master unit testing with NUnit, XUnit and MOQ with a real worl
 
 ## Certifications
 ![image](https://github.com/dLopes-SE/UnitTesting/assets/45246598/410c0bb6-8ec4-463a-a361-6eafe6eada60)
+![image](https://github.com/dLopes-SE/UnitTesting/assets/45246598/6a4722bb-a226-4b29-a117-351404aac0e4)
