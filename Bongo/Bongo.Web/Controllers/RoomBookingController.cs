@@ -2,14 +2,10 @@
 using Bongo.Models.Model;
 using Bongo.Models.Model.VM;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Bongo.Web.Controllers
 {
-    public class RoomBookingController : Controller
+  public class RoomBookingController : Controller
     {
         private IStudyRoomBookingService _studyRoomBookingService;
 
